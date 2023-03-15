@@ -15,6 +15,10 @@ export default {
             if (day < 10) day = "0" + day;
             if (month < 10) month = "0" + month;
             return `${day}/${month}/${year} at ${hours}:${minutes}:${seconds}`
+        },
+        abstract() {
+            const abstract = this.project.description.slice(0, 50);
+            return abstract + '...';
         }
     }
 };
@@ -34,7 +38,7 @@ export default {
         <div class="card-body">
             <h6 class="card-subtitle mb-2 text-muted">Slug: {{ project.slug }}</h6>
             <p class="card-text">Url: {{ project.url }}</p>
-            <p class="card-text">Description: {{ project.description }}</p>
+            <p class="card-text">Description: {{ abstract }}</p>
             <div v-if="project.type">
                 <p>Type of project: {{ project.type.label }}</p>
             </div>
