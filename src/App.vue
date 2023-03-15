@@ -10,8 +10,13 @@ export default {
     }),
     methods: {
         fetchProjects() {
-            axios.get('')
+            axios.get(apiBaseUrl + '/projects').then(res => {
+                this.projects = res.data;
+            });
         }
+    },
+    created() {
+        this.fetchProjects();
     }
 };
 
@@ -20,9 +25,10 @@ export default {
 <template>
     <app-header></app-header>
     <main class="container">
-        <ul>
-            <li></li>
+        <ul v-if="projects.length" class="my-4">
+            <li v-for="project in projects" :key="project.id">{{ project.title }}</li>
         </ul>
+        <h5 v-else class="text-center my-4">There aren't projects in this portfolio</h5>
     </main>
 </template>
 
