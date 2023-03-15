@@ -26,10 +26,6 @@ export default {
 </script>
 
 <template>
-    <div class="col-12">
-
-
-    </div>
     <div class="card mb-3">
         <img :src="project.image" class="card-img-top w-25 py-3" :alt="project.name">
         <div class="card-header">
