@@ -10,7 +10,7 @@ export default {
 
 <template>
     <section id="projects-list" class="my-4">
-        <div v-if="projects.length">
+        <div class="row gy-3" v-if="projects.length">
             <project-card v-for="project in projects" :key="project.id" :project="project"></project-card>
         </div>
         <h5 v-else class="text-center">There aren't projects in this portfolio</h5>

@@ -4,7 +4,7 @@ import AppHeader from './components/AppHeader.vue';
 import ProjectsList from './components/projects/ProjectsList.vue';
 const apiBaseUrl = 'http://localhost:8000/api';
 export default {
-    name: 'App',
+    name: 'Boolfolio',
     components: { AppHeader, ProjectsList },
     data: () => ({
         projects: []
