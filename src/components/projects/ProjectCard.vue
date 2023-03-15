@@ -2,6 +2,21 @@
 export default {
     name: 'ProjectCard',
     props: { project: Object },
+    computed: {
+        projectDate() {
+            const date = new Date(this.project.updated_at);
+            let day = date.getDay();
+            let month = date.getMonth();
+            const year = date.getFullYear();
+            const hours = date.getHours();
+            const minutes = date.getMinutes();
+            const seconds = date.getSeconds();
+
+            if (day < 10) day = "0" + day;
+            if (month < 10) month = "0" + month;
+            return `${day}/${month}/${year} at ${hours}:${minutes}:${seconds}`
+        }
+    }
 };
 
 </script>
@@ -37,7 +52,7 @@ export default {
             <div>
                 <small>Author: {{ project.author.name }}</small>
             </div>
-            <p class="card-text"><small class="text-muted">Last updated: {{ project.updated_at }}</small></p>
+            <p class="card-text"><small class="text-muted">Last updated: {{ projectDate }}</small></p>
         </div>
     </div>
 </template>
