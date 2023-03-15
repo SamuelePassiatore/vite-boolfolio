@@ -2,21 +2,27 @@
 import axios from 'axios';
 import AppHeader from './components/AppHeader.vue';
 import AppAlert from './components/AppAlert.vue';
+import AppPagination from './components/AppPagination.vue';
 import ProjectsList from './components/projects/ProjectsList.vue';
-const apiBaseUrl = 'h://localhost:8000/api';
+const apiBaseUrl = 'http://localhost:8000/api';
 export default {
     name: 'Boolfolio',
-    components: { AppHeader, AppAlert, ProjectsList },
+    components: { AppHeader, AppAlert, AppPagination, ProjectsList },
     data: () => ({
         isLoading: false,
         hasError: false,
-        projects: []
+        projects: {
+            data: [],
+            links: [],
+        }
     }),
     methods: {
-        fetchProjects() {
+        fetchProjects(endpoint = null) {
             this.isLoading = true;
-            axios.get(apiBaseUrl + '/projects').then(res => {
-                this.projects = res.data;
+            if (!endpoint) endpoint = apiBaseUrl + '/projects';
+            axios.get(endpoint).then(res => {
+                const { data, links } = res.data;
+                this.projects = { data, links };
             }).catch(() => {
                 this.hasError = true;
             }).then(() => {
@@ -36,7 +42,10 @@ export default {
     <main class="container">
         <app-alert :is-open="hasError" @close="hasError = false"></app-alert>
         <app-loader v-if="isLoading"></app-loader>
-        <projects-list v-else :projects="projects"></projects-list>
+        <projects-list v-else :projects="projects.data"></projects-list>
+        <footer>
+            <app-pagination :links="projects.links" @change-page="fetchProjects"></app-pagination>
+        </footer>
     </main>
 </template>
 
