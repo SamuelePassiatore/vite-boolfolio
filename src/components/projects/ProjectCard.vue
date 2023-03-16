@@ -27,7 +27,7 @@ export default {
 
 <template>
     <div class="card mb-3">
-        <img :src="project.image" class="card-img-top w-25 py-3" :alt="project.name">
+        <img :src="project.image" class="card-img-top w-25 py-3" :alt="project.title">
         <div class="card-header">
             <h5 class="card-title">{{ project.title }}</h5>
         </div>
@@ -38,6 +38,9 @@ export default {
             <div v-if="project.type">
                 <p>Type of project: {{ project.type.label }}</p>
             </div>
+            <div v-else>
+                <p>No type</p>
+            </div>
             <div v-if="project.technologies.length">
                 <p>Technology:</p>
                 <div v-for="technology in project.technologies">
@@ -45,7 +48,7 @@ export default {
                 </div>
             </div>
             <div v-else>
-                No technologies
+                <p>No technologies</p>
             </div>
         </div>
         <div class="card-footer">
