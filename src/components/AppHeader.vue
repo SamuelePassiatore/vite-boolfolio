@@ -16,11 +16,10 @@ export default {
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <router-link to="/" class="nav-link active" aria-current="page">Home</router-link>
+                        <router-link to="/" class="nav-link" aria-current="page">Home</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link :to="{ name: 'contact' }" class="nav-link active"
-                            aria-current="page">Contact</router-link>
+                        <router-link :to="{ name: 'contact' }" class="nav-link" aria-current="page">Contact</router-link>
                     </li>
                 </ul>
             </div>
@@ -31,6 +30,5 @@ export default {
 <style>
 nav {
     height: 60px;
-    background-color: lightgray;
 }
 </style>
