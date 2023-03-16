@@ -24,4 +24,9 @@ export default {
     </nav>
 </template>
 
-<style></style>
+<style>
+nav {
+    height: 60px;
+    background-color: lightgray;
+}
+</style>
