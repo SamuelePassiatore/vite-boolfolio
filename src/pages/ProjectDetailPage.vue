@@ -1,7 +1,9 @@
 <script>
 import axios from 'axios';
+const apiBaseUrl = 'http://localhost:8000/api/';
 import AppAlert from '../components/AppAlert.vue';
 import ProjectCard from '../components/projects/ProjectCard.vue';
+
 export default {
     name: 'ProjectDetailPage',
     components: { AppAlert, ProjectCard },
@@ -11,11 +13,11 @@ export default {
         isLoading: false,
     }),
     methods: {
-        getProject(endpoint = null) {
+        getProject() {
             this.isLoading = true;
-            if (!endpoint) endpoint = apiBaseUrl + '/projects';
+            const endpoint = apiBaseUrl + 'projects/' + this.$route.params.id;
             axios.get(endpoint).then(res => {
-                this.projects = res.data;
+                this.project = res.data;
             }).catch(() => {
                 this.hasError = true;
             }).then(() => {
