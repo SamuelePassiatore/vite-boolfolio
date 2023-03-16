@@ -59,7 +59,8 @@ export default {
                 <p class="card-text"><small class="text-muted">Last updated: {{ projectDate }}</small></p>
             </div>
             <div>
-                <router-link :to="{ name: 'project-detail', params: { id: project.id } }">See more</router-link>
+                <router-link class="btn btn-primary" :to="{ name: 'project-detail', params: { id: project.id } }">See
+                    more</router-link>
             </div>
 
         </div>
