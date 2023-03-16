@@ -1,18 +1,18 @@
 <script>
 import AppHeader from './components/AppHeader.vue';
-import HomePage from './pages/HomePage.vue';
 
 export default {
     name: 'Boolfolio',
-    components: { AppHeader, HomePage },
+    components: { AppHeader },
 };
 
 </script>
 
 <template>
     <app-header></app-header>
-    <!-- <router-view></router-view> -->
-    <home-page></home-page>
+    <main class="container">
+        <router-view></router-view>
+    </main>
 </template>
 
 <style></style>

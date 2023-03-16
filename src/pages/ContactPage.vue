@@ -5,6 +5,8 @@ export default {
 
 </script>
 
-<template></template>
+<template>
+    <h1>Contact section</h1>
+</template>
 
 <style scoped lang="scss"></style>

@@ -38,14 +38,12 @@ export default {
 </script>
 
 <template>
-    <main class="container">
-        <app-alert :is-open="hasError" @close="hasError = false"></app-alert>
-        <app-loader v-if="isLoading"></app-loader>
-        <projects-list v-else :projects="projects.data"></projects-list>
-        <footer>
-            <app-pagination :links="projects.links" @change-page="fetchProjects"></app-pagination>
-        </footer>
-    </main>
+    <app-alert :is-open="hasError" @close="hasError = false"></app-alert>
+    <app-loader v-if="isLoading"></app-loader>
+    <projects-list v-else :projects="projects.data"></projects-list>
+    <footer>
+        <app-pagination :links="projects.links" @change-page="fetchProjects"></app-pagination>
+    </footer>
 </template>
 
 <style scoped lang="scss"></style>
