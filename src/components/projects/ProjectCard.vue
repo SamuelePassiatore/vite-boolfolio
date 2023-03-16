@@ -76,7 +76,9 @@ export default {
                     :to="{ name: 'project-detail', params: { slug: project.slug } }">See
                     more</router-link>
             </div>
-
+            <div v-if="isDetail">
+                <button class="btn btn-secondary" @click="$router.back()">Back</button>
+            </div>
         </div>
     </div>
 </template>
