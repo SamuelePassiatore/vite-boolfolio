@@ -27,7 +27,9 @@ export default {
 
 <template>
     <div class="card mb-3">
-        <img :src="project.image" class="card-img-top w-25 py-3" :alt="project.title">
+        <div v-if="project.image">
+            <img :src="project.image" class="card-img-top w-25 py-3" :alt="project.title">
+        </div>
         <div class="card-header">
             <h5 class="card-title">{{ project.title }}</h5>
         </div>
@@ -60,7 +62,7 @@ export default {
             </div>
             <div>
                 <router-link v-if="!isDetail" class="btn btn-primary"
-                    :to="{ name: 'project-detail', params: { id: project.id } }">See
+                    :to="{ name: 'project-detail', params: { slug: project.slug } }">See
                     more</router-link>
             </div>
 

@@ -15,11 +15,12 @@ export default {
     methods: {
         getProject() {
             this.isLoading = true;
-            const endpoint = apiBaseUrl + 'projects/' + this.$route.params.id;
+            const endpoint = apiBaseUrl + 'projects/' + this.$route.params.slug;
             axios.get(endpoint).then(res => {
                 this.project = res.data;
             }).catch(() => {
                 this.hasError = true;
+                // this.$router.push({ 'name': 'not-found' })
             }).then(() => {
                 this.isLoading = false;
             });
