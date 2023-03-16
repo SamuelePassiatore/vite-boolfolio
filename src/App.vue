@@ -11,6 +11,7 @@ export default {
 
 <template>
     <app-header></app-header>
+    <!-- <router-view></router-view> -->
     <home-page></home-page>
 </template>
 
