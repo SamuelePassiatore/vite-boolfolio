@@ -5,6 +5,7 @@ import HomePage from '../pages/HomePage.vue';
 import ContactPage from '../pages/ContactPage.vue';
 import NotFoundPage from '../pages/NotFoundPage.vue';
 import ProjectDetailPage from '../pages/ProjectDetailPage.vue';
+import TypeProjectsPage from '../pages/TypeProjectsPage.vue';
 
 // Define routes and create router
 const router = createRouter({

@@ -43,9 +43,12 @@ export default {
             <h6 class="card-subtitle mb-2 text-muted">Slug: {{ project.slug }}</h6>
             <p class="card-text">Url: {{ project.url }}</p>
             <p class="card-text">Description: {{ isDetail ? project.description : abstract }}</p>
-            <div v-if="project.type">
+            <div v-if="project.type" class="d-flex">
                 <span>Type of project: </span>
-                <p class="badge rounded-pill" :style="{ backgroundColor: project.type.color }">{{ project.type.label }}</p>
+                <router-link v-if="project.type" :to="{ name: 'type-projects', params: { id: project.type.id } }">
+                    <p class="badge rounded-pill" :style="{ backgroundColor: project.type.color }">{{ project.type.label }}
+                    </p>
+                </router-link>
             </div>
             <div v-else>
                 <p>No type</p>

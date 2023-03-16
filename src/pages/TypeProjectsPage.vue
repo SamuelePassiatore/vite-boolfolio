@@ -10,17 +10,14 @@ export default {
     data: () => ({
         isLoading: false,
         hasError: false,
-        projects: {
-            data: [],
-        }
+        projects: [],
     }),
     methods: {
         fetchProjects(endpoint = null) {
             this.isLoading = true;
-            if (!endpoint) endpoint = `${apiBaseUrl}/types/${this.route.params.id} /projects`;
+            if (!endpoint) endpoint = `${apiBaseUrl}types/${this.$route.params.id}/projects`;
             axios.get(endpoint).then(res => {
-                const { data, links } = res.data;
-                this.projects = { data, links };
+                this.projects = res.data;
             }).catch(() => {
                 this.hasError = true;
             }).then(() => {
@@ -39,7 +36,7 @@ export default {
 <template>
     <app-alert :is-open="hasError" @close="hasError = false"></app-alert>
     <app-loader v-if="isLoading"></app-loader>
-    <projects-list v-else :projects="projects.data"></projects-list>
+    <projects-list v-else :projects="projects"></projects-list>
 </template>
 
 <style scoped lang="scss"></style>
