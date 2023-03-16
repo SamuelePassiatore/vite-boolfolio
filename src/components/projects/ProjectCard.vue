@@ -51,11 +51,17 @@ export default {
                 <p>No technologies</p>
             </div>
         </div>
-        <div class="card-footer">
+        <div class="card-footer d-flex justify-content-between">
             <div>
-                <small>Author: {{ project.author.name }}</small>
+                <div>
+                    <small>Author: {{ project.author.name }}</small>
+                </div>
+                <p class="card-text"><small class="text-muted">Last updated: {{ projectDate }}</small></p>
             </div>
-            <p class="card-text"><small class="text-muted">Last updated: {{ projectDate }}</small></p>
+            <div>
+                <router-link :to="{ name: 'project-detail', params: { id: project.id } }">See more</router-link>
+            </div>
+
         </div>
     </div>
 </template>
