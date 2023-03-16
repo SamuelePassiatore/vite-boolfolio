@@ -1,7 +1,7 @@
 <script>
 export default {
     name: 'ProjectCard',
-    props: { project: Object },
+    props: { project: Object, isDetail: Boolean },
     computed: {
         projectDate() {
             const date = new Date(this.project.updated_at);
@@ -34,7 +34,7 @@ export default {
         <div class="card-body">
             <h6 class="card-subtitle mb-2 text-muted">Slug: {{ project.slug }}</h6>
             <p class="card-text">Url: {{ project.url }}</p>
-            <p class="card-text">Description: {{ abstract }}</p>
+            <p class="card-text">Description: {{ isDetail ? project.description : abstract }}</p>
             <div v-if="project.type">
                 <p>Type of project: {{ project.type.label }}</p>
             </div>
@@ -59,7 +59,8 @@ export default {
                 <p class="card-text"><small class="text-muted">Last updated: {{ projectDate }}</small></p>
             </div>
             <div>
-                <router-link class="btn btn-primary" :to="{ name: 'project-detail', params: { id: project.id } }">See
+                <router-link v-if="!isDetail" class="btn btn-primary"
+                    :to="{ name: 'project-detail', params: { id: project.id } }">See
                     more</router-link>
             </div>
 

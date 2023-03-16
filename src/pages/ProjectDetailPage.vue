@@ -36,7 +36,7 @@ export default {
 <template>
     <app-alert :is-open="hasError" @close="hasError = false"></app-alert>
     <app-loader v-if="isLoading"></app-loader>
-    <project-card v-else :project="project"></project-card>
+    <project-card v-else :project="project" :isDetail="true"></project-card>
 </template>
 
 <style scoped lang="scss"></style>
