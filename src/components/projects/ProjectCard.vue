@@ -19,6 +19,12 @@ export default {
         abstract() {
             const abstract = this.project.description.slice(0, 50);
             return abstract + '...';
+        },
+        fullName() {
+            if (!this.project.author.details && this.project.author) return this.project.author.name;
+            if (!this.project.author.details && !this.project.author) return 'Anonymous';
+            const { first_name, last_name } = this.project.author.details;
+            return `${first_name} ${last_name}`;
         }
     }
 };
@@ -38,14 +44,16 @@ export default {
             <p class="card-text">Url: {{ project.url }}</p>
             <p class="card-text">Description: {{ isDetail ? project.description : abstract }}</p>
             <div v-if="project.type">
-                <p>Type of project: {{ project.type.label }}</p>
+                <span>Type of project: </span>
+                <p class="badge rounded-pill" :style="{ backgroundColor: project.type.color }">{{ project.type.label }}</p>
             </div>
             <div v-else>
                 <p>No type</p>
             </div>
-            <div v-if="project.technologies.length">
+            <div v-if="project.technologies?.length">
                 <p>Technology:</p>
-                <div v-for="technology in project.technologies">
+                <div v-for="technology in project.technologies" :key="technology.id" class="badge"
+                    :style="{ backgroundColor: technology.color }">
                     {{ technology.label }}
                 </div>
             </div>
@@ -56,7 +64,7 @@ export default {
         <div class="card-footer d-flex justify-content-between">
             <div>
                 <div>
-                    <small>Author: {{ project.author.name }}</small>
+                    <small>Author: {{ fullName }}</small>
                 </div>
                 <p class="card-text"><small class="text-muted">Last updated: {{ projectDate }}</small></p>
             </div>
