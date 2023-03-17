@@ -20,7 +20,7 @@ export default {
                 this.project = res.data;
             }).catch(() => {
                 this.hasError = true;
-                // this.$router.push({ 'name': 'not-found' })
+                this.$router.push({ 'name': 'not-found' })
             }).then(() => {
                 this.isLoading = false;
             });
@@ -37,7 +37,7 @@ export default {
 <template>
     <app-alert :is-open="hasError" @close="hasError = false"></app-alert>
     <app-loader v-if="isLoading"></app-loader>
-    <project-card v-else :project="project" :isDetail="true"></project-card>
+    <project-card v-if="!isLoading && project" :project="project" :isDetail="true"></project-card>
 </template>
 
 <style scoped lang="scss"></style>
